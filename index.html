@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Learning Hub</title>
+    <!-- Tailwind CSS CDN for easy styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter for a clean, modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles to ensure Inter font is applied and for general aesthetics */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5; /* Light gray background */
+        }
+        /* Style for active category button */
+        .category-button.active {
+            background-color: #3b82f6; /* Blue for active state */
+            color: white;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.4); /* Subtle shadow */
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header Section -->
+    <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-6 shadow-lg rounded-b-xl">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-4xl font-bold mb-4 md:mb-0">English Learning Hub</h1>
+            <nav>
+                <ul class="flex space-x-6 text-lg">
+                    <li><a href="#" class="hover:text-blue-200 transition duration-300">Home</a></li>
+                    <li><a href="#" class="hover:text-blue-200 transition duration-300">About</a></li>
+                    <li><a href="#" class="hover:text-blue-200 transition duration-300">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto p-6 flex-grow grid grid-cols-1 lg:grid-cols-4 gap-8">
+
+        <!-- Left Sidebar - Categories -->
+        <aside class="lg:col-span-1 bg-white p-6 rounded-xl shadow-md h-fit">
+            <h2 class="text-2xl font-semibold mb-6 text-gray-800">Learning Categories</h2>
+            <div class="flex flex-col space-y-4">
+                <!-- Category buttons with unique IDs and data attributes -->
+                <button id="grammar-btn" class="category-button bg-gray-100 hover:bg-blue-100 text-gray-700 font-medium py-3 px-5 rounded-lg transition duration-300 ease-in-out text-left active" data-category="grammar">
+                    Grammar
+                </button>
+                <button id="vocabulary-btn" class="category-button bg-gray-100 hover:bg-blue-100 text-gray-700 font-medium py-3 px-5 rounded-lg transition duration-300 ease-in-out text-left" data-category="vocabulary">
+                    Vocabulary
+                </button>
+                <button id="pronunciation-btn" class="category-button bg-gray-100 hover:bg-blue-100 text-gray-700 font-medium py-3 px-5 rounded-lg transition duration-300 ease-in-out text-left" data-category="pronunciation">
+                    Pronunciation
+                </button>
+                <button id="reading-btn" class="category-button bg-gray-100 hover:bg-blue-100 text-gray-700 font-medium py-3 px-5 rounded-lg transition duration-300 ease-in-out text-left" data-category="reading">
+                    Reading
+                </button>
+                <button id="writing-btn" class="category-button bg-gray-100 hover:bg-blue-100 text-gray-700 font-medium py-3 px-5 rounded-lg transition duration-300 ease-in-out text-left" data-category="writing">
+                    Writing
+                </button>
+                <button id="listening-btn" class="category-button bg-gray-100 hover:bg-blue-100 text-gray-700 font-medium py-3 px-5 rounded-lg transition duration-300 ease-in-out text-left" data-category="listening">
+                    Listening
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content - Tasks Section and Grammar Assistant -->
+        <section class="lg:col-span-2 bg-white p-8 rounded-xl shadow-md">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800" id="tasks-header">Grammar Tasks</h2>
+            <div id="tasks-content" class="space-y-6 mb-8">
+                <!-- Grammar Tasks (Initial content) -->
+                <div class="task-card bg-blue-50 p-6 rounded-lg shadow-sm border border-blue-200">
+                    <h3 class="text-xl font-semibold text-blue-800 mb-2">Task 1: Verb Tenses Practice</h3>
+                    <p class="text-gray-700">Complete the sentences using the correct verb tense (present simple, past simple, future simple).</p>
+                    <button class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">Start Task</button>
+                </div>
+                <div class="task-card bg-blue-50 p-6 rounded-lg shadow-sm border border-blue-200">
+                    <h3 class="text-xl font-semibold text-blue-800 mb-2">Task 2: Articles (a, an, the)</h3>
+                    <p class="text-gray-700">Fill in the blanks with the appropriate article.</p>
+                    <button class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">Start Task</button>
+                </div>
+                <div class="task-card bg-blue-50 p-6 rounded-lg shadow-sm border border-blue-200">
+                    <h3 class="text-xl font-semibold text-blue-800 mb-2">Task 3: Prepositions of Place</h3>
+                    <p class="text-gray-700">Choose the correct preposition to describe the location of objects.</p>
+                    <button class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">Start Task</button>
+                </div>
+            </div>
+
+            <!-- New Grammar Assistant Section -->
+            <div class="bg-blue-100 p-8 rounded-xl shadow-inner border border-blue-300">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">✨ Grammar Assistant</h2>
+                <p class="text-gray-700 mb-4">Enter a sentence below to get grammar feedback or a corrected version.</p>
+                <textarea id="grammar-input" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 resize-y min-h-[100px]" placeholder="Type your sentence here..."></textarea>
+                <button id="analyze-grammar-btn" class="mt-4 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                    Analyze Grammar
+                </button>
+                <div id="grammar-loading-indicator" class="mt-4 text-center text-gray-500 hidden">
+                    Analyzing...
+                </div>
+                <div id="grammar-output" class="mt-6 bg-white p-5 rounded-lg border border-gray-200 shadow-sm hidden">
+                    <!-- Grammar analysis will be displayed here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Sidebar - Daily Word & Tips -->
+        <aside class="lg:col-span-1 flex flex-col space-y-8">
+            <!-- Daily Word Section -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h2 class="text-2xl font-semibold mb-4 text-gray-800">Daily Word</h2>
+                <div id="daily-word-content" class="bg-green-50 p-4 rounded-lg border border-green-200">
+                    <p class="text-green-800 text-lg font-bold" id="current-daily-word">Ephemeral</p>
+                    <p class="text-gray-700 mt-2">
+                        <span class="font-semibold">Definition:</span> Lasting for a very short time.
+                    </p>
+                    <p class="text-gray-700 mt-1" id="daily-word-example">
+                        <span class="font-semibold">Example:</span> "The joy of the holiday was <span class="italic">ephemeral</span>, quickly fading as work resumed."
+                    </p>
+                    <button id="generate-examples-btn" class="mt-4 bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                        ✨ More Examples
+                    </button>
+                </div>
+                <div id="additional-examples" class="mt-4 text-gray-700 space-y-2">
+                    <!-- Additional examples will be loaded here -->
+                </div>
+                <div id="examples-loading-indicator" class="mt-4 text-center text-gray-500 hidden">
+                    Generating examples...
+                </div>
+            </div>
+
+            <!-- Learning Tips Section -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h2 class="text-2xl font-semibold mb-4 text-gray-800">Learning Tips</h2>
+                <ul class="list-disc list-inside text-gray-700 space-y-2">
+                    <li>Practice daily, even for a short time.</li>
+                    <li>Immerse yourself in English media (movies, music, podcasts).</li>
+                    <li>Don't be afraid to make mistakes; they are part of learning.</li>
+                    <li>Find a language partner to practice speaking.</li>
+                    <li>Set clear, achievable goals for your learning.</li>
+                </ul>
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white p-6 mt-8 rounded-t-xl shadow-inner">
+        <div class="container mx-auto text-center text-gray-400">
+            &copy; 2025 English Learning Hub. All rights reserved. Designed by Khant Phone Naing.
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for dynamic content loading based on category selection
+
+        // Define task data for each category
+        const tasksData = {
+            grammar: [
+                { title: "Task 1: Verb Tenses Practice", description: "Complete the sentences using the correct verb tense (present simple, past simple, future simple)." },
+                { title: "Task 2: Articles (a, an, the)", description: "Fill in the blanks with the appropriate article." },
+                { title: "Task 3: Prepositions of Place", description: "Choose the correct preposition to describe the location of objects." },
+                { title: "Task 4: Subject-Verb Agreement", description: "Identify and correct subject-verb agreement errors." }
+            ],
+            vocabulary: [
+                { title: "Task 1: Synonyms and Antonyms", description: "Match words with their synonyms and antonyms." },
+                { title: "Task 2: Word Families", description: "Identify different forms of a word (noun, verb, adjective, adverb)." },
+                { title: "Task 3: Common Idioms", description: "Understand the meaning and usage of common English idioms." },
+                { title: "Task 4: Phrasal Verbs", description: "Learn and practice common phrasal verbs." }
+            ],
+            pronunciation: [
+                { title: "Task 1: IPA Symbols Practice", description: "Practice recognizing and producing sounds using IPA symbols." },
+                { title: "Task 2: Word Stress", description: "Identify the stressed syllable in multi-syllable words." },
+                { title: "Task 3: Intonation Patterns", description: "Practice different intonation patterns for questions and statements." },
+                { title: "Task 4: Minimal Pairs", description: "Distinguish between similar-sounding words (e.g., 'ship' vs. 'sheep')." }
+            ],
+            reading: [
+                { title: "Task 1: Comprehension Questions", description: "Read a short passage and answer comprehension questions." },
+                { title: "Task 2: Main Idea Identification", description: "Read an article and identify its main idea and supporting details." },
+                { title: "Task 3: Skimming and Scanning", description: "Practice skimming for general understanding and scanning for specific information." },
+                { title: "Task 4: Inference Practice", description: "Read between the lines to make inferences from texts." }
+            ],
+            writing: [
+                { title: "Task 1: Sentence Construction", description: "Write grammatically correct simple, compound, and complex sentences." },
+                { title: "Task 2: Paragraph Writing", description: "Write a coherent paragraph on a given topic with a clear topic sentence." },
+                { title: "Task 3: Essay Outline", description: "Create an outline for a short argumentative or descriptive essay." },
+                { title: "Task 4: Email Writing", description: "Practice writing formal and informal emails for different purposes." }
+            ],
+            listening: [
+                { title: "Task 1: Short Conversation Comprehension", description: "Listen to short conversations and answer questions about them." },
+                { title: "Task 2: Lecture Note-Taking", description: "Listen to a short lecture and take effective notes." },
+                { title: "Task 3: Identifying Key Information", description: "Listen to an audio clip and identify key facts and details." },
+                { title: "Task 4: Understanding Accents", description: "Practice listening to different English accents (e.g., British, American, Australian)." }
+            ]
+        };
+
+        // Get references to DOM elements
+        const categoryButtons = document.querySelectorAll('.category-button');
+        const tasksHeader = document.getElementById('tasks-header');
+        const tasksContent = document.getElementById('tasks-content');
+
+        // Gemini API configuration
+        const apiKey = ""; // Canvas will provide this at runtime
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+        // Get new DOM elements for LLM features
+        const generateExamplesBtn = document.getElementById('generate-examples-btn');
+        const additionalExamplesDiv = document.getElementById('additional-examples');
+        const examplesLoadingIndicator = document.getElementById('examples-loading-indicator');
+        const currentDailyWord = document.getElementById('current-daily-word');
+
+        const grammarInput = document.getElementById('grammar-input');
+        const analyzeGrammarBtn = document.getElementById('analyze-grammar-btn');
+        const grammarOutputDiv = document.getElementById('grammar-output');
+        const grammarLoadingIndicator = document.getElementById('grammar-loading-indicator');
+
+
+        /**
+         * Renders tasks for a given category.
+         * @param {string} category - The category name (e.g., 'grammar').
+         */
+        function renderTasks(category) {
+            // Update the header text
+            tasksHeader.textContent = `${category.charAt(0).toUpperCase() + category.slice(1)} Tasks`;
+            // Clear existing tasks
+            tasksContent.innerHTML = '';
+
+            // Get tasks for the selected category, default to an empty array if not found
+            const currentTasks = tasksData[category] || [];
+
+            // If no tasks are found, display a message
+            if (currentTasks.length === 0) {
+                tasksContent.innerHTML = `
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200 text-center text-gray-600">
+                        No tasks available for this category yet. Please check back later!
+                    </div>
+                `;
+                return;
+            }
+
+            // Create and append task cards
+            currentTasks.forEach(task => {
+                const taskCard = document.createElement('div');
+                taskCard.className = 'task-card bg-blue-50 p-6 rounded-lg shadow-sm border border-blue-200';
+                taskCard.innerHTML = `
+                    <h3 class="text-xl font-semibold text-blue-800 mb-2">${task.title}</h3>
+                    <p class="text-gray-700">${task.description}</p>
+                    <button class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">Start Task</button>
+                `;
+                tasksContent.appendChild(taskCard);
+            });
+        }
+
+        /**
+         * Handles click events on category buttons.
+         * @param {Event} event - The click event object.
+         */
+        function handleCategoryClick(event) {
+            // Remove 'active' class from all buttons
+            categoryButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Add 'active' class to the clicked button
+            event.currentTarget.classList.add('active');
+
+            // Get the category from the data-category attribute
+            const selectedCategory = event.currentTarget.dataset.category;
+
+            // Render tasks for the selected category
+            renderTasks(selectedCategory);
+        }
+
+        // Add event listeners to all category buttons
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', handleCategoryClick);
+        });
+
+        /**
+         * Calls the Gemini API to generate additional examples for the daily word.
+         */
+        async function generateDailyWordExamples() {
+            const word = currentDailyWord.textContent.trim();
+            if (!word) {
+                additionalExamplesDiv.innerHTML = '<p class="text-red-500">Could not find a word to generate examples for.</p>';
+                return;
+            }
+
+            examplesLoadingIndicator.classList.remove('hidden');
+            additionalExamplesDiv.innerHTML = ''; // Clear previous examples
+
+            try {
+                const prompt = `Provide 3 distinct example sentences for the English word "${word}", demonstrating its usage in different contexts. Format each example as a separate bullet point.`;
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { contents: chatHistory };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    // Format the response for display (e.g., convert bullet points to list items)
+                    const examplesHtml = text.split('\n').map(line => {
+                        if (line.trim().startsWith('* ')) {
+                            return `<p class="text-gray-700">${line.trim().substring(2)}</p>`;
+                        }
+                        return ''; // Ignore lines that are not bullet points
+                    }).join('');
+                    additionalExamplesDiv.innerHTML = `<h4 class="font-semibold mb-2">More Examples:</h4>${examplesHtml}`;
+                } else {
+                    additionalExamplesDiv.innerHTML = '<p class="text-red-500">Failed to generate examples. Please try again.</p>';
+                }
+            } catch (error) {
+                console.error("Error generating examples:", error);
+                additionalExamplesDiv.innerHTML = '<p class="text-red-500">An error occurred while generating examples.</p>';
+            } finally {
+                examplesLoadingIndicator.classList.add('hidden');
+            }
+        }
+
+        /**
+         * Calls the Gemini API to analyze the grammar of a user-provided sentence.
+         */
+        async function analyzeGrammar() {
+            const sentence = grammarInput.value.trim();
+            if (!sentence) {
+                grammarOutputDiv.classList.remove('hidden');
+                grammarOutputDiv.innerHTML = '<p class="text-red-500">Please enter a sentence to analyze.</p>';
+                return;
+            }
+
+            grammarLoadingIndicator.classList.remove('hidden');
+            grammarOutputDiv.classList.add('hidden'); // Hide previous output
+            grammarOutputDiv.innerHTML = ''; // Clear previous output
+
+            try {
+                const prompt = `Analyze the grammar of the following English sentence: "${sentence}".
+1.  **Corrected Sentence:** [Provide the corrected sentence, or state 'No correction needed.']
+2.  **Explanation:** [Explain any grammatical errors found, or provide insights into the sentence structure and why it's correct. Be concise and clear.]`;
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { contents: chatHistory };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    grammarOutputDiv.innerHTML = `<div class="text-gray-800">${text.replace(/\n/g, '<br>')}</div>`;
+                    grammarOutputDiv.classList.remove('hidden');
+                } else {
+                    grammarOutputDiv.classList.remove('hidden');
+                    grammarOutputDiv.innerHTML = '<p class="text-red-500">Failed to analyze grammar. Please try again.</p>';
+                }
+            } catch (error) {
+                console.error("Error analyzing grammar:", error);
+                grammarOutputDiv.classList.remove('hidden');
+                grammarOutputDiv.innerHTML = '<p class="text-red-500">An error occurred while analyzing grammar.</p>';
+            } finally {
+                grammarLoadingIndicator.classList.add('hidden');
+            }
+        }
+
+        // Add event listeners for the new LLM buttons
+        generateExamplesBtn.addEventListener('click', generateDailyWordExamples);
+        analyzeGrammarBtn.addEventListener('click', analyzeGrammar);
+
+        // Initial render: Load Grammar tasks when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTasks('grammar');
+        });
+    </script>
+</body>
+</html>
